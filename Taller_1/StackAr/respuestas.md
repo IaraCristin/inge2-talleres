@@ -32,15 +32,15 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 
 1. ¿Cuántos mutantes vivos y muertos encontraron cada uno de los test suites?
    - **StackTests1**:
-     - Mutantes vivos: 54
+     - Mutantes vivos: 48
      - Mutantes muertos: 16
    - **StackTests2**:
-     - Mutantes vivos: 40
+     - Mutantes vivos: 34
      - Mutantes muertos: 30
 
 2. ¿Cuál es el mutation score de cada test suite?
-   - **StackTests1**: 22%
-   - **StackTests2**: 42%
+   - **StackTests1**: 25%
+   - **StackTests2**: 46%
 
 ---
 
