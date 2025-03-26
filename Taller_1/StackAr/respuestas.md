@@ -55,6 +55,7 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 
 3. Comente cuáles son todos los mutantes vivos que quedaron y por qué son equivalentes al programa original (si no lo fueran, todavía es posible mejorar el mutation score).
    - Respuesta:
+      - StackArMutated1216 (TrueReturnsMutator: Se reemplazó false por true en la línea 82.): es codigo inalcanzable. En este metodo "equal", luego de haber chequeado que los elementos de ambos stack estan almacenados en arrays identicos, chequea que el read index sea el mismo. Este siempre es el caso ya que readIndex es una variable privada y solamente aumento y disminuye en la funciones push y pop que a su vez modifican el array del stack de forma acorde. Es decir, si los arrays de ambos stacks son identicos, el read index va a ser el mismo, por lo que no se entra a su guarda. En caso contrario se retorna false en la guarda de comparacion de los arrays.
 
 4. ¿Cuál es el instruction coverage promedio que lograron para las clases mutadas?
    - Respuesta:

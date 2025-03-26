@@ -64,4 +64,13 @@ public class StackTests3 extends MutationAnalysisRunner {
     public void testConstructorWithCapacityZero() throws Exception {
         Stack stack = createStack(0);
     }
+
+    public void testToHashMethod() throws Exception {
+        Stack stack = createStack();
+        stack.push(42);
+        int first = stack.hashCode();
+        stack.push(43);
+        int second = stack.hashCode();
+        assertNotEquals(first, second);
+    }
 }
