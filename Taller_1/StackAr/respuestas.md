@@ -8,7 +8,7 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 ## Ejercicio 1: Resultados de generación de mutantes
 
 1. ¿Cuántos mutantes se generaron en total?
-   - Respuesta: 70
+   - Respuesta: 64
 
 2. ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
    - Respuesta: El operador de mutación que más mutantes generó fue NegateConditionsMutator con 9 mutantes.
@@ -47,11 +47,11 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 ## Ejercicio 3: Mejora del test suite
 
 1. ¿Cuál es el mutation score logrado para los tests de StackTests3?
-   - Respuesta:
+   - Respuesta: 79%
 
 2. ¿Cuántos mutantes vivos y muertos encontraron?
-   - Mutantes vivos:
-   - Mutantes muertos:
+   - Mutantes vivos: 13
+   - Mutantes muertos: 51
 
 3. Comente cuáles son todos los mutantes vivos que quedaron y por qué son equivalentes al programa original (si no lo fueran, todavía es posible mejorar el mutation score).
    - Respuesta:
@@ -59,7 +59,8 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
       - StackArMutated7270 (FalseConditionalsMutator: Se reemplazó != por false en la línea 81.): al igual que en el caso anterior, el codigo dentro de esta guarda es inalcanzable. Si se llega a evaluar esa guarda, siempre evalua a false, luego el mutante es equivalente.
 
 4. ¿Cuál es el instruction coverage promedio que lograron para las clases mutadas?
-   - Respuesta:
+   - Respuesta: 66%
 
 5. ¿Cuál es el peor instruction coverage que lograron para una clase mutada? ¿Por qué creen que sucede esto?
-   - Respuesta:
+   - Respuesta: 0% 
+   Esto sucede porque el test determina que debe matar al mutante muy rápidamente, donde apenas entra en una función ya puede determinar que falla. Por lo que no necesita ejecutar más instrucciones.
