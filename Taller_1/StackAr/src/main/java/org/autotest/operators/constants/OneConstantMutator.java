@@ -57,8 +57,15 @@ public class OneConstantMutator extends MutationOperator {
     public String describeMutation(CtElement candidate) {
         // COMPLETAR
         CtLiteral op = (CtLiteral)candidate;
+
+        String opString = op.getValue().toString();
+
+        if (op.getParent().toString().contains("-1")) {
+            opString = "-1";
+        }
+
         return this.getClass().getSimpleName() + ": Se reemplazó " +
-                op.getValue().toString() + " por 1" +
+                opString + " por 1" +
                 " en la línea " + op.getPosition().getLine() + ".";
     }
 }
