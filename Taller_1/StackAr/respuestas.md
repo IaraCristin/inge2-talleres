@@ -11,24 +11,20 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
    - Respuesta: 70
 
 2. ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
-   - Respuesta: El operador de mutación que más mutantes generó fue NullReturnsMutator con 10 mutantes.
-   - Voy a ir llevando la cuenta de los operadores así no tengo que matarme en cada pregunta
-     - EmptyReturnsMutator: 3
-     - FalseReturnsMutator: 8
-     - MinusOneConstantMutator: 8
-     - ZeroConstantMutator: 5
-     - TrueReturnsMutator: 8
-     - MathMutator: 5
-     - IncrementsMutator: 3
-     - TrueConditionalsMutator: 4
-     - OneConstantMutator: 7
-     - FalseConditionalsMutator: 4
-     - NullReturnsMutator: 3
-     - ConditionalsBoundaryMutator: 3
-     - NegateConditionsMutator: 9
+   - Respuesta: El operador de mutación que más mutantes generó fue NegateConditionsMutator con 9 mutantes.
+   Esto debido a que abarca varios casos para aplicar cambios sin importar tanto el contexto. 
+   Por ejemplo en el caso de TrueConditionalsMutator, este depende de que el contexto del operador que queremos cambiar sea un If,
+   mientras que NegateConditionsMutator cambia todos los condicionales sin importar si están en un If, un While, o si son un valor de retorno, 
+   siempre y cuando el condicional tenga un opuesto.
 
 3. ¿Qué operador de mutación generó menos mutantes? ¿Cuántos y por qué?
-   - Respuesta:
+   - Respuesta: En este caso es un empate entre EmptyReturnsMutator, IncrementsMutator y ConditionalsBoundaryMutator con 3 mutantes cada uno.
+   En el caso de EmptyReturnsMutator, solo cambia valores de retorno, lo cual limita mucho los cambios que puede producir en un código, ya que se limita directamente al número de funciones presentes.
+   A eso hay que agregarle que únicamente cambia aquellos valores de tipo String o int, lo cual limita aún más los mutantes que pueda generar.
+   En el caso de IncrementsMutator, también son muy limitados los casos donde produce cambios porque solo reemplaza los operadores de incremento y decremento de variables locales, o sea en operadores unarios.
+   Particularmente en el código que queremos modificar no hay tantas instancias de operaciones unarias por lo que no se pueden generar muchos mutantes.
+   Y por último, en el caso de ConditionalsBoundaryMutator, si bien es similar a NegateConditionsMutator en que cambia cualquier condicional sin importar su contexto,
+   los casos donde aplica cambios son menos, y en particular en el código que queremos mutar no aparecen tanto estos casos.
 
 ---
 
@@ -36,15 +32,15 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 
 1. ¿Cuántos mutantes vivos y muertos encontraron cada uno de los test suites?
    - **StackTests1**:
-     - Mutantes vivos:
-     - Mutantes muertos:
+     - Mutantes vivos: 54
+     - Mutantes muertos: 16
    - **StackTests2**:
-     - Mutantes vivos:
-     - Mutantes muertos:
+     - Mutantes vivos: 40
+     - Mutantes muertos: 30
 
 2. ¿Cuál es el mutation score de cada test suite?
-   - **StackTests1**:
-   - **StackTests2**:
+   - **StackTests1**: 22%
+   - **StackTests2**: 42%
 
 ---
 
