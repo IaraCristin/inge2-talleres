@@ -73,11 +73,11 @@ public class StackAr extends Stack {
 <span class="fc" id="L73">			return true;</span>
 <span class="fc bfc" id="L74" title="All 2 branches covered.">		if (obj == null)</span>
 <span class="fc" id="L75">			return false;</span>
-<span class="pc bpc" id="L76" title="1 of 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">		if (getClass() != obj.getClass())</span>
 <span class="fc" id="L77">			return false;</span>
-<span class="nc" id="L78">		StackAr other = (StackAr) obj;</span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">		if (!Arrays.equals(elems, other.elems))</span>
-<span class="nc" id="L80">			return false;</span>
+<span class="fc" id="L78">		StackAr other = (StackAr) obj;</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">		if (!Arrays.equals(elems, other.elems))</span>
+<span class="fc" id="L80">			return false;</span>
 <span class="nc bnc" id="L81" title="All 2 branches missed.">		if (readIndex != other.readIndex)</span>
 <span class="nc" id="L82">			return false;</span>
 <span class="nc" id="L83">		return true;</span>

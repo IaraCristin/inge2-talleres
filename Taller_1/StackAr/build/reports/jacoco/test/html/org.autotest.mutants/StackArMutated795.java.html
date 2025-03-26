@@ -60,17 +60,17 @@ public class StackArMutated795 extends org.autotest.Stack {
 
     @java.lang.Override
     public int hashCode() {
-<span class="nc" id="L63">        final int prime = 31;</span>
-<span class="nc" id="L64">        int result = 1;</span>
-<span class="nc" id="L65">        result = (prime * result) + java.util.Arrays.hashCode(elems);</span>
-<span class="nc" id="L66">        result = (prime * result) + readIndex;</span>
-<span class="nc" id="L67">        return result;</span>
+<span class="fc" id="L63">        final int prime = 31;</span>
+<span class="fc" id="L64">        int result = 1;</span>
+<span class="fc" id="L65">        result = (prime * result) + java.util.Arrays.hashCode(elems);</span>
+<span class="fc" id="L66">        result = (prime * result) + readIndex;</span>
+<span class="fc" id="L67">        return result;</span>
     }
 
     @java.lang.Override
     public boolean equals(java.lang.Object obj) {
-<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (this == obj) {</span>
-<span class="nc" id="L73">            return true;</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (this == obj) {</span>
+<span class="fc" id="L73">            return true;</span>
         }
 <span class="nc bnc" id="L75" title="All 2 branches missed.">        if (obj == null) {</span>
 <span class="nc" id="L76">            return false;</span>
@@ -90,18 +90,18 @@ public class StackArMutated795 extends org.autotest.Stack {
 
     @java.lang.Override
     public java.lang.String toString() {
-<span class="nc" id="L93">        java.lang.StringBuffer b = new java.lang.StringBuffer();</span>
-<span class="nc" id="L94">        b.append(&quot;[&quot;);</span>
-<span class="nc bnc" id="L95" title="All 2 branches missed.">        for (int i = 0; i &lt;= readIndex; i++) {</span>
-<span class="nc bnc" id="L96" title="All 2 branches missed.">            if (i &gt; 0) {</span>
-<span class="nc" id="L97">                b.append(&quot;,&quot;);</span>
+<span class="fc" id="L93">        java.lang.StringBuffer b = new java.lang.StringBuffer();</span>
+<span class="fc" id="L94">        b.append(&quot;[&quot;);</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        for (int i = 0; i &lt;= readIndex; i++) {</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            if (i &gt; 0) {</span>
+<span class="fc" id="L97">                b.append(&quot;,&quot;);</span>
             }
-<span class="nc" id="L99">            java.lang.Object o = elems[i];</span>
-<span class="nc" id="L100">            java.lang.String s = java.lang.String.valueOf(o);</span>
-<span class="nc" id="L101">            b.append(s);</span>
+<span class="fc" id="L99">            java.lang.Object o = elems[i];</span>
+<span class="fc" id="L100">            java.lang.String s = java.lang.String.valueOf(o);</span>
+<span class="fc" id="L101">            b.append(s);</span>
         }
-<span class="nc" id="L103">        b.append(&quot;]&quot;);</span>
-<span class="nc" id="L104">        return b.toString();</span>
+<span class="fc" id="L103">        b.append(&quot;]&quot;);</span>
+<span class="fc" id="L104">        return b.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

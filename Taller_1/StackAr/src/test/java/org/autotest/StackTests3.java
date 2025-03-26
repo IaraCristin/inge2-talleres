@@ -89,4 +89,17 @@ public class StackTests3 extends MutationAnalysisRunner {
         String anotherClass = "anotherClass";
         assertFalse(stack.equals(anotherClass));
     }
+
+    public void testEqualsWithDifferents() throws Exception {
+        Stack stack = createStack();
+        stack.push(42);
+        Stack anotherStack = createStack();
+        assertFalse(stack.equals(anotherStack));
+    }
+
+    public void testPopIsLastPushed() throws Exception {
+        Stack stack = createStack();
+        stack.push(42);
+        assertEquals(stack.pop(), 42);
+    }
 }
