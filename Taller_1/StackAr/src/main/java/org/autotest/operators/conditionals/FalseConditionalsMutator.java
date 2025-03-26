@@ -22,31 +22,34 @@ public class FalseConditionalsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
 
-        if (!(candidate instanceof CtBinaryOperator)) {
+        if (!(candidate instanceof CtIf)) {
             return false;
         }
 
-        CtBinaryOperator op = (CtBinaryOperator)candidate;
+        CtIf op = (CtIf) candidate;
         List<BinaryOperatorKind> targetOperations = Arrays.asList(
                 BinaryOperatorKind.EQ, // ==
                 BinaryOperatorKind.NE // !=
         );
-        return targetOperations.contains(op.getKind());
+
+        //Primero nos fijamos que el condicional sea un operador binario y luego nos fijamos de qué tipo
+        return  op.getCondition() instanceof CtBinaryOperator &&
+                targetOperations.contains(((CtBinaryOperator) op.getCondition()).getKind());
     }
 
     @Override
     public void process(CtElement candidate) {
 
-        //CtLiteral op = candidate.getFactory().Code().createLiteral(false);
-        //candidate.set;
+        CtIf op = (CtIf)candidate;
+        op.setCondition(op.getFactory().Code().createLiteral(false));
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
         // COMPLETAR
-        CtBinaryOperator op = (CtBinaryOperator)candidate;
+        CtIf op = (CtIf)candidate;
         return this.getClass().getSimpleName() + ": Se reemplazó " +
-                BinaryOperatorKindToString.get(op.getKind()) + " por false" +
+                BinaryOperatorKindToString.get(((CtBinaryOperator) op.getCondition()).getKind()) + " por false" +
                 " en la línea " + op.getPosition().getLine() + ".";
     }
 }
