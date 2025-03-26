@@ -24,7 +24,7 @@ public class NullReturnsMutator extends MutationOperator {
         }
 
         CtReturn op = (CtReturn)candidate;
-        return op.getReturnedExpression().getType().isPrimitive();
+        return !op.getReturnedExpression().getType().isPrimitive();
 
     }
 

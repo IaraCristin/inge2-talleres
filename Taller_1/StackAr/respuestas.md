@@ -8,10 +8,24 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 ## Ejercicio 1: Resultados de generación de mutantes
 
 1. ¿Cuántos mutantes se generaron en total?
-   - Respuesta:
+   - Respuesta: 70
 
 2. ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
-   - Respuesta:
+   - Respuesta: El operador de mutación que más mutantes generó fue NullReturnsMutator con 10 mutantes.
+   - Voy a ir llevando la cuenta de los operadores así no tengo que matarme en cada pregunta
+     - EmptyReturnsMutator: 3
+     - FalseReturnsMutator: 8
+     - MinusOneConstantMutator: 8
+     - ZeroConstantMutator: 5
+     - TrueReturnsMutator: 8
+     - MathMutator: 5
+     - IncrementsMutator: 3
+     - TrueConditionalsMutator: 4
+     - OneConstantMutator: 7
+     - FalseConditionalsMutator: 4
+     - NullReturnsMutator: 3
+     - ConditionalsBoundaryMutator: 3
+     - NegateConditionsMutator: 9
 
 3. ¿Qué operador de mutación generó menos mutantes? ¿Cuántos y por qué?
    - Respuesta:
