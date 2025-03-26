@@ -11,8 +11,8 @@ public class StackArMutated1405 extends org.autotest.Stack {
 <span class="fc" id="L11">    private int readIndex = -1;</span>
 
     public StackArMutated1405() {
-<span class="fc" id="L14">        this(org.autotest.mutants.StackArMutated1405.DEFAULT_CAPACITY);</span>
-<span class="fc" id="L15">    }</span>
+<span class="nc" id="L14">        this(org.autotest.mutants.StackArMutated1405.DEFAULT_CAPACITY);</span>
+<span class="nc" id="L15">    }</span>
 
 <span class="fc" id="L17">    public StackArMutated1405(int capacity) throws java.lang.IllegalArgumentException {</span>
 <span class="pc bpc" id="L18" title="1 of 2 branches missed.">        if (capacity &lt; 0) {</span>
@@ -26,7 +26,7 @@ public class StackArMutated1405 extends org.autotest.Stack {
     }
 
     public boolean isEmpty() {
-<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        return size() == 0;</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        return size() == 0;</span>
     }
 
     public boolean isFull() {
@@ -34,8 +34,8 @@ public class StackArMutated1405 extends org.autotest.Stack {
     }
 
     public void push(java.lang.Object o) throws java.lang.IllegalStateException {
-<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if (isFull()) {</span>
-<span class="fc" id="L38">            throw new java.lang.IllegalStateException();</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (isFull()) {</span>
+<span class="nc" id="L38">            throw new java.lang.IllegalStateException();</span>
         }
 <span class="nc" id="L40">        this.readIndex++;</span>
 <span class="nc" id="L41">        this.elems[readIndex] = o;</span>
