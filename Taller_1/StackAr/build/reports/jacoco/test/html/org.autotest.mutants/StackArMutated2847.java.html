@@ -15,11 +15,11 @@ public class StackArMutated2847 extends org.autotest.Stack {
 <span class="nc" id="L15">    }</span>
 
 <span class="fc" id="L17">    public StackArMutated2847(int capacity) throws java.lang.IllegalArgumentException {</span>
-<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (capacity &lt; 0) {</span>
+<span class="pc bpc" id="L18" title="1 of 2 branches missed.">        if (capacity &lt; 0) {</span>
 <span class="fc" id="L19">            throw new java.lang.IllegalArgumentException();</span>
         }
-<span class="fc" id="L21">        this.elems = new java.lang.Object[capacity];</span>
-<span class="fc" id="L22">    }</span>
+<span class="nc" id="L21">        this.elems = new java.lang.Object[capacity];</span>
+<span class="nc" id="L22">    }</span>
 
     public int size() {
 <span class="nc" id="L25">        return readIndex + 1;</span>

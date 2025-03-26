@@ -73,4 +73,9 @@ public class StackTests3 extends MutationAnalysisRunner {
         int second = stack.hashCode();
         assertNotEquals(first, second);
     }
+
+    public void testEqualsItself() throws Exception {
+        Stack stack = createStack();
+        assertTrue(stack.equals(stack));
+    }
 }
