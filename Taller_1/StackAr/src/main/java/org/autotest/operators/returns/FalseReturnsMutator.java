@@ -7,6 +7,7 @@ import spoon.reflect.declaration.CtElement;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Operador de mutación basado en https://pitest.org/quickstart/mutators/#FALSE_RETURNS
@@ -26,7 +27,16 @@ public class FalseReturnsMutator extends MutationOperator {
         List<String> targetTypes = Arrays.asList(
                 "boolean"
         );
-        return targetTypes.contains(type);
+
+        if (!targetTypes.contains(type)) {
+            return false;
+        }
+
+        if (!Objects.equals(op.toString(), "return false")) {
+            return true;
+        }
+
+        return false;
     }
 
     private static String getReturnedExpressionType(CtReturn op) {
