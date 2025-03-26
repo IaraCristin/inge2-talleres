@@ -61,4 +61,7 @@ public class StackTests3 extends MutationAnalysisRunner {
     }
 
     // COMPLETAR
+    public void testConstructorWithCapacityZero() throws Exception {
+        Stack stack = createStack(0);
+    }
 }
