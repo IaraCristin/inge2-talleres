@@ -8,14 +8,12 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 ## Ejercicio 1: Resultados de generación de mutantes
 
 1. ¿Cuántos mutantes se generaron en total?
-   - Respuesta: 64
+   - Respuesta: 75
 
 2. ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
-   - Respuesta: El operador de mutación que más mutantes generó fue NegateConditionsMutator con 9 mutantes.
-   Esto debido a que abarca varios casos para aplicar cambios sin importar tanto el contexto. 
-   Por ejemplo en el caso de TrueConditionalsMutator, este depende de que el contexto del operador que queremos cambiar sea un If,
-   mientras que NegateConditionsMutator cambia todos los condicionales sin importar si están en un If, un While, o si son un valor de retorno, 
-   siempre y cuando el condicional tenga un opuesto.
+   - Respuesta: Los operadores de mutación que más mutantes generaron fueron TrueConditionalMutators y FalseConditionalMutators con 10 mutantes cada uno.
+   Esto debido a que estos mutantes pueden modificar todas las guardas presentes en el codigo (que en el caso de StackAr son 10), y que en ningun caso la aplicación de la mutación lleva a un codigo identico al que teniamos, es decir, reemplazar "true" por "true" o "false" por "false".
+   
 
 3. ¿Qué operador de mutación generó menos mutantes? ¿Cuántos y por qué?
    - Respuesta: En este caso es un empate entre EmptyReturnsMutator, IncrementsMutator y ConditionalsBoundaryMutator con 3 mutantes cada uno.
@@ -32,15 +30,15 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 
 1. ¿Cuántos mutantes vivos y muertos encontraron cada uno de los test suites?
    - **StackTests1**:
-     - Mutantes vivos: 48
-     - Mutantes muertos: 16
+     - Mutantes vivos: 57
+     - Mutantes muertos: 18
    - **StackTests2**:
-     - Mutantes vivos: 34
-     - Mutantes muertos: 30
+     - Mutantes vivos: 39
+     - Mutantes muertos: 36
 
 2. ¿Cuál es el mutation score de cada test suite?
-   - **StackTests1**: 25%
-   - **StackTests2**: 46%
+   - **StackTests1**: 24%
+   - **StackTests2**: 48%
 
 ---
 
@@ -57,7 +55,9 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
    - Respuesta:
       - StackArMutated1216 (TrueReturnsMutator: Se reemplazó false por true en la línea 82.): es codigo inalcanzable. En este metodo "equal", luego de haber chequeado que los elementos de ambos stack estan almacenados en arrays identicos, chequea que el read index sea el mismo. Este siempre es el caso ya que readIndex es una variable privada y solamente aumento y disminuye en la funciones push y pop que a su vez modifican el array del stack de forma acorde. Es decir, si los arrays de ambos stacks son identicos, el read index va a ser el mismo, por lo que no se entra a su guarda. En caso contrario se retorna false en la guarda de comparacion de los arrays.
       - StackArMutated7270 (FalseConditionalsMutator: Se reemplazó != por false en la línea 81.): al igual que en el caso anterior, el codigo dentro de esta guarda es inalcanzable. Si se llega a evaluar esa guarda, siempre evalua a false, luego el mutante es equivalente.
-
+      - StackArMutated6670 (FalseConditionalsMutator: Se reemplazó this == obj por false en la línea 72.): se trata de un mutante equivalente. Al querer comparar un stack consigo mismo y poner dicha guarda en false, se saltea el paso de chequear si es el mismo stack en memoria. Pero luego, al poseer los mismos elementos, el metodo igual sigue respondiendo de la misma manera. 
+      - StackArMutated8980 (FalseConditionalsMutator: Se reemplazó isEmpty() por false en la línea 45.): en este caso se esperar que se pueda realizar un pop de un stack vacio sin hacer saltar la exception programada en el metodo pop. Pero el metodo pop a su vez llama al metodo top que tiene la misma condicion (esta vez, sin modificar por el mutante), que hace que salte la misma excepcion. Por lo tanto, a pesar de la modificacion del mutante, como la condicion que hace saltar la excepcion se chequea dos veces, esta siempre salta.
+      - StackArMutated9390 (MathMutator: Se reemplazó * por / en la línea 65.): se trata de un mutante equivalente, ya que se cambia una multiplicación por 1 (el valor de result), por una division por 1.
 4. ¿Cuál es el instruction coverage promedio que lograron para las clases mutadas?
    - Respuesta: 66%
 

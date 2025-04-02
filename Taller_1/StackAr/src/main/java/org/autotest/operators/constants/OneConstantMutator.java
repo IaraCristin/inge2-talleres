@@ -2,6 +2,8 @@ package org.autotest.operators.constants;
 
 import org.autotest.operators.MutationOperator;
 import spoon.reflect.code.CtLiteral;
+import spoon.reflect.code.CtUnaryOperator;
+import spoon.reflect.code.UnaryOperatorKind;
 import spoon.reflect.declaration.CtElement;
 
 import java.util.Arrays;

@@ -8,45 +8,40 @@ import spoon.reflect.factory.Factory;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Operador de mutación basado en https://pitest.org/quickstart/mutators/#REMOVE_CONDITIONALS
  *
  * Este operador reemplaza los valores en las condiciones de guardas por true.
  */
-<span class="nc" id="L17">public class TrueConditionalsMutator extends MutationOperator {</span>
+<span class="nc" id="L18">public class TrueConditionalsMutator extends MutationOperator {</span>
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
 
-<span class="nc bnc" id="L21" title="All 2 branches missed.">        if (!(candidate instanceof CtIf)) {</span>
-<span class="nc" id="L22">            return false;</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        if (!(candidate instanceof CtIf)){</span>
+<span class="nc" id="L23">            return false;</span>
         }
 
-<span class="nc" id="L25">        CtIf op = (CtIf) candidate;</span>
-<span class="nc" id="L26">        List&lt;BinaryOperatorKind&gt; targetOperations = Arrays.asList(</span>
-                BinaryOperatorKind.EQ, // ==
-                BinaryOperatorKind.NE // !=
-        );
+<span class="nc" id="L26">        CtElement op = ((CtIf) candidate).getCondition();</span>
 
-        //Primero nos fijamos que el condicional sea un operador binario y luego nos fijamos de qué tipo
-<span class="nc bnc" id="L32" title="All 2 branches missed.">        return  op.getCondition() instanceof CtBinaryOperator &amp;&amp;</span>
-<span class="nc bnc" id="L33" title="All 2 branches missed.">                targetOperations.contains(((CtBinaryOperator) op.getCondition()).getKind());</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        return !Objects.equals(op.toString(), &quot;true&quot;);</span>
     }
 
     @Override
     public void process(CtElement candidate) {
 
-<span class="nc" id="L39">        CtIf op = (CtIf)candidate;</span>
-<span class="nc" id="L40">        op.setCondition(op.getFactory().Code().createLiteral(true));</span>
-<span class="nc" id="L41">    }</span>
+<span class="nc" id="L34">        CtIf op = (CtIf)candidate;</span>
+<span class="nc" id="L35">        op.setCondition(op.getFactory().Code().createLiteral(true));</span>
+<span class="nc" id="L36">    }</span>
 
     @Override
     public String describeMutation(CtElement candidate) {
 
-<span class="nc" id="L46">        CtIf op = (CtIf)candidate;</span>
-<span class="nc" id="L47">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
-<span class="nc" id="L48">                BinaryOperatorKindToString.get(((CtBinaryOperator) op.getCondition()).getKind()) + &quot; por true&quot; +</span>
-<span class="nc" id="L49">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
+<span class="nc" id="L41">        CtIf op = (CtIf)candidate;</span>
+<span class="nc" id="L42">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
+<span class="nc" id="L43">                op.getCondition().toString() + &quot; por true&quot; +</span>
+<span class="nc" id="L44">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

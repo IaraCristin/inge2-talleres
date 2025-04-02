@@ -1,7 +1,7 @@
 package org.autotest;
 
 import java.util.ArrayList;
-
+import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StackTests3 extends MutationAnalysisRunner {
@@ -74,11 +74,6 @@ public class StackTests3 extends MutationAnalysisRunner {
         assertNotEquals(first, second);
     }
 
-    public void testEqualsItself() throws Exception {
-        Stack stack = createStack();
-        assertTrue(stack.equals(stack));
-    }
-
     public void testDifferentToNull() throws Exception {
         Stack stack = createStack();
         assertFalse(stack.equals(null));
@@ -108,4 +103,64 @@ public class StackTests3 extends MutationAnalysisRunner {
         Stack anotherStack = createStack();
         assertTrue(stack.equals(anotherStack));
     }
+
+    public void testNotEqualsToAnotherWithDifferentsElements() throws Exception {
+        Stack stack = createStack();
+        stack.push(1);
+        Stack anotherStack = createStack();
+        anotherStack.push(10);
+        assertFalse(stack.equals(anotherStack));
+    }
+
+    public void testPopReturnPushedElement() throws Throwable {
+        Stack stackAr1 = createStack();
+        stackAr1.push(1);
+        assertEquals(1, stackAr1.pop());
+    }
+
+    public void testHashCode() throws Throwable {
+        Stack stackAr1 = createStack(1);
+        int expectedHash = calcHashCode(new Object[1], 0);
+        int realHash = stackAr1.hashCode();
+        assertEquals(expectedHash, realHash);
+    }
+
+    int calcHashCode(Object[] array, int elems) {
+        return 31*(31+ Arrays.hashCode(array)) + elems-1;
+    }
+
+    public void testEqualsItself() throws Throwable {
+        Stack stackAr1 = createStack();
+        assertTrue(stackAr1.equals(stackAr1));
+    }
+
+    public void testRaiseExceptionTopEmptyStack() throws Exception {
+
+        assertThrows(IllegalStateException.class , () -> {
+            Stack stackAr1 = createStack();
+            stackAr1.top();
+        });
+
+    }
+
+    public void testRaiseExceptionWhenPushToFullStack() throws Exception {
+
+        assertThrows(IllegalStateException.class , () -> {
+            Stack stackAr1 = createStack(0);
+            stackAr1.push(42);
+        });
+    }
+
+    public void testRaiseExceptionWhenPopFromEmptyStack() throws Exception {
+
+        assertThrows(IllegalStateException.class , () -> {
+            Stack stackAr1 = createStack(1);
+            stackAr1.push(1);
+            stackAr1.pop();
+            stackAr1.pop();
+        });
+
+    }
+
 }
+

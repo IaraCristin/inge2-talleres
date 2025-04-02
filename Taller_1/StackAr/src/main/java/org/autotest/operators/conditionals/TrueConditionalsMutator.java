@@ -8,6 +8,7 @@ import spoon.reflect.factory.Factory;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Operador de mutación basado en https://pitest.org/quickstart/mutators/#REMOVE_CONDITIONALS
@@ -18,19 +19,13 @@ public class TrueConditionalsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
 
-        if (!(candidate instanceof CtIf)) {
+        if (!(candidate instanceof CtIf)){
             return false;
         }
 
-        CtIf op = (CtIf) candidate;
-        List<BinaryOperatorKind> targetOperations = Arrays.asList(
-                BinaryOperatorKind.EQ, // ==
-                BinaryOperatorKind.NE // !=
-        );
+        CtElement op = ((CtIf) candidate).getCondition();
 
-        //Primero nos fijamos que el condicional sea un operador binario y luego nos fijamos de qué tipo
-        return  op.getCondition() instanceof CtBinaryOperator &&
-                targetOperations.contains(((CtBinaryOperator) op.getCondition()).getKind());
+        return !Objects.equals(op.toString(), "true");
     }
 
     @Override
@@ -45,7 +40,7 @@ public class TrueConditionalsMutator extends MutationOperator {
 
         CtIf op = (CtIf)candidate;
         return this.getClass().getSimpleName() + ": Se reemplazó " +
-                BinaryOperatorKindToString.get(((CtBinaryOperator) op.getCondition()).getKind()) + " por true" +
+                op.getCondition().toString() + " por true" +
                 " en la línea " + op.getPosition().getLine() + ".";
     }
 }

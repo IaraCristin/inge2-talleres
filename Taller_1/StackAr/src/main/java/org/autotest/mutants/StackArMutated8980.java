@@ -1,7 +1,7 @@
 package org.autotest.mutants;
 
 /**
- * OneConstantMutator: Se reemplazó 31 por 1 en la línea 63.
+ * FalseConditionalsMutator: Se reemplazó isEmpty() por false en la línea 45.
  */
 public class StackArMutated8980 extends org.autotest.Stack {
     private static final int DEFAULT_CAPACITY = 10;
@@ -42,7 +42,7 @@ public class StackArMutated8980 extends org.autotest.Stack {
     }
 
     public java.lang.Object pop() throws java.lang.IllegalStateException {
-        if (isEmpty()) {
+        if (false) {
             throw new java.lang.IllegalStateException();
         }
         java.lang.Object rv = this.top();
@@ -60,7 +60,7 @@ public class StackArMutated8980 extends org.autotest.Stack {
 
     @java.lang.Override
     public int hashCode() {
-        final int prime = 1;
+        final int prime = 31;
         int result = 1;
         result = (prime * result) + java.util.Arrays.hashCode(elems);
         result = (prime * result) + readIndex;
