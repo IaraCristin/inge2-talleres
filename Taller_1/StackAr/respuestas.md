@@ -8,7 +8,7 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 ## Ejercicio 1: Resultados de generación de mutantes
 
 1. ¿Cuántos mutantes se generaron en total?
-   - Respuesta: 75
+   - Respuesta: 76
 
 2. ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
    - Respuesta: Los operadores de mutación que más mutantes generaron fueron TrueConditionalMutators y FalseConditionalMutators con 10 mutantes cada uno.

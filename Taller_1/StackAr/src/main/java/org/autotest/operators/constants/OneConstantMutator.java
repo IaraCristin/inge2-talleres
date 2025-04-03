@@ -1,5 +1,6 @@
 package org.autotest.operators.constants;
 
+import org.autotest.helpers.UnaryOperatorKindToString;
 import org.autotest.operators.MutationOperator;
 import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtUnaryOperator;
@@ -18,37 +19,73 @@ import java.util.Objects;
 public class OneConstantMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
-        if (!(candidate instanceof CtLiteral)) {
+
+        if (candidate instanceof CtUnaryOperator) {
+            CtUnaryOperator op = (CtUnaryOperator)candidate;
+            if (!(op.getKind() == UnaryOperatorKind.NEG && op.getOperand() instanceof CtLiteral)) {
+                return false;
+            }
+        } else if (!(candidate instanceof CtLiteral)) {
             return false;
         }
 
-        CtLiteral op = (CtLiteral)candidate;
-        String type = getLiteralType(op);
-        List<String> targetTypes = Arrays.asList(
-                "int"
-        );
 
-        if (!targetTypes.contains(type)) {
-            return false;
+        if (candidate instanceof CtUnaryOperator) {
+            CtUnaryOperator op = (CtUnaryOperator) candidate;
+            CtLiteral operand = (CtLiteral) op.getOperand();
+
+            String type = getLiteralType(operand);
+            List<String> targetTypes = Arrays.asList(
+                    "int"
+            );
+
+            if (!targetTypes.contains(type)) {
+                return false;
+            }
+
+            return true;
+
+
+        } else {
+            CtLiteral op = (CtLiteral)candidate;
+
+            String type = getLiteralType(op);
+            List<String> targetTypes = Arrays.asList(
+                    "int"
+            );
+
+            if (!targetTypes.contains(type)) {
+                return false;
+            }
+
+            String parentNodeCode = op.getParent().toString();
+            // No usamos op.getValue().toString() para obtener el valor del literal sino que miramos el parent porque
+            // Spoon separa los literales negativos en dos nodos: el operador de negación y el literal.
+
+            if ((Objects.equals(op.getValue().toString(), "1")) || parentNodeCode.contains("-")) {
+                // Para evitar generar mutantes inválidos, ignoramos los literales que ya son 1
+                //Y como a los negativos los debería captar el CtUnaryOperator, evitamos esos también
+                return false;
+            }
+
+            return true;
         }
 
-        String parentNodeCode = op.getParent().toString();
-        // No usamos op.getValue().toString() para obtener el valor del literal sino que miramos el parent porque
-        // Spoon separa los literales negativos en dos nodos: el operador de negación y el literal.
-        if ((Objects.equals(op.getValue().toString(), "1")) && !parentNodeCode.contains("-1")) {
-            // Para evitar generar mutantes inválidos, ignoramos los literales que ya son 1
-            return false;
-        }
-
-        return true;
     }
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
-        CtLiteral op = (CtLiteral)candidate;
-        op.setValue(op.getFactory().Code().createLiteral(1));
+
+        if (candidate instanceof CtUnaryOperator) {
+            CtUnaryOperator op = (CtUnaryOperator)candidate;
+            CtLiteral newLiteral = op.getFactory().Code().createLiteral(1);
+            op.setOperand(newLiteral);
+            op.setKind(UnaryOperatorKind.POS);
+        } else {
+            CtLiteral op = (CtLiteral)candidate;
+            op.setValue(op.getFactory().Code().createLiteral(1));
+        }
+
     }
 
     private static String getLiteralType(CtLiteral op) {
@@ -57,17 +94,18 @@ public class OneConstantMutator extends MutationOperator {
 
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
-        CtLiteral op = (CtLiteral)candidate;
+        CtLiteral op;
 
-        String opString = op.getValue().toString();
-
-        if (op.getParent().toString().contains("-1")) {
-            opString = "-1";
+        if (candidate instanceof CtUnaryOperator) {
+            op = (CtLiteral) ((CtUnaryOperator) candidate).getOperand();
+            return this.getClass().getSimpleName() + ": Se reemplazó " +
+                    "-" + op.getValue().toString() + " por 1" +
+                    " en la línea " + op.getPosition().getLine() + ".";
+        } else {
+            op = (CtLiteral) candidate;
+            return this.getClass().getSimpleName() + ": Se reemplazó " +
+                    op.getValue().toString() + " por 1" +
+                    " en la línea " + op.getPosition().getLine() + ".";
         }
-
-        return this.getClass().getSimpleName() + ": Se reemplazó " +
-                opString + " por 1" +
-                " en la línea " + op.getPosition().getLine() + ".";
     }
 }
