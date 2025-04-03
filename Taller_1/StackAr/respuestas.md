@@ -8,7 +8,7 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 ## Ejercicio 1: Resultados de generación de mutantes
 
 1. ¿Cuántos mutantes se generaron en total?
-   - Respuesta: 76
+   - Respuesta: 75
 
 2. ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
    - Respuesta: Los operadores de mutación que más mutantes generaron fueron TrueConditionalMutators y FalseConditionalMutators con 10 mutantes cada uno.
@@ -30,15 +30,15 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 
 1. ¿Cuántos mutantes vivos y muertos encontraron cada uno de los test suites?
    - **StackTests1**:
-     - Mutantes vivos: 57
-     - Mutantes muertos: 18
+     - Mutantes vivos: 56
+     - Mutantes muertos: 19
    - **StackTests2**:
-     - Mutantes vivos: 39
-     - Mutantes muertos: 36
+     - Mutantes vivos: 38
+     - Mutantes muertos: 37
 
 2. ¿Cuál es el mutation score de cada test suite?
-   - **StackTests1**: 24%
-   - **StackTests2**: 48%
+   - **StackTests1**: 25%
+   - **StackTests2**: 49%
 
 ---
 

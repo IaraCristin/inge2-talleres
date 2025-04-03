@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OneConstantMutator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StackAr</a> &gt; <a href="index.source.html" class="el_package">org.autotest.operators.constants</a> &gt; <span class="el_source">OneConstantMutator.java</span></div><h1>OneConstantMutator.java</h1><pre class="source lang-java linenums">package org.autotest.operators.constants;
 
+import org.autotest.helpers.UnaryOperatorKindToString;
 import org.autotest.operators.MutationOperator;
 import spoon.reflect.code.CtLiteral;
+import spoon.reflect.code.CtUnaryOperator;
+import spoon.reflect.code.UnaryOperatorKind;
 import spoon.reflect.declaration.CtElement;
 
 import java.util.Arrays;
@@ -13,60 +16,97 @@ import java.util.Objects;
  *
  * Este operador reemplaza los valores de las constantes por uno.
  */
-<span class="nc" id="L16">public class OneConstantMutator extends MutationOperator {</span>
+<span class="nc" id="L19">public class OneConstantMutator extends MutationOperator {</span>
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
-<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (!(candidate instanceof CtLiteral)) {</span>
-<span class="nc" id="L21">            return false;</span>
+
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if (candidate instanceof CtUnaryOperator) {</span>
+<span class="nc" id="L24">            CtUnaryOperator op = (CtUnaryOperator)candidate;</span>
+<span class="nc bnc" id="L25" title="All 4 branches missed.">            if (!(op.getKind() == UnaryOperatorKind.NEG &amp;&amp; op.getOperand() instanceof CtLiteral)) {</span>
+<span class="nc" id="L26">                return false;</span>
+            }
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        } else if (!(candidate instanceof CtLiteral)) {</span>
+<span class="nc" id="L29">            return false;</span>
         }
 
-<span class="nc" id="L24">        CtLiteral op = (CtLiteral)candidate;</span>
-<span class="nc" id="L25">        String type = getLiteralType(op);</span>
-<span class="nc" id="L26">        List&lt;String&gt; targetTypes = Arrays.asList(</span>
-                &quot;int&quot;
-        );
 
-<span class="nc bnc" id="L30" title="All 2 branches missed.">        if (!targetTypes.contains(type)) {</span>
-<span class="nc" id="L31">            return false;</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if (candidate instanceof CtUnaryOperator) {</span>
+<span class="nc" id="L34">            CtUnaryOperator op = (CtUnaryOperator) candidate;</span>
+<span class="nc" id="L35">            CtLiteral operand = (CtLiteral) op.getOperand();</span>
+
+<span class="nc" id="L37">            String type = getLiteralType(operand);</span>
+<span class="nc" id="L38">            List&lt;String&gt; targetTypes = Arrays.asList(</span>
+                    &quot;int&quot;
+            );
+
+<span class="nc bnc" id="L42" title="All 2 branches missed.">            if (!targetTypes.contains(type)) {</span>
+<span class="nc" id="L43">                return false;</span>
+            }
+
+<span class="nc" id="L46">            return true;</span>
+
+
+        } else {
+<span class="nc" id="L50">            CtLiteral op = (CtLiteral)candidate;</span>
+
+<span class="nc" id="L52">            String type = getLiteralType(op);</span>
+<span class="nc" id="L53">            List&lt;String&gt; targetTypes = Arrays.asList(</span>
+                    &quot;int&quot;
+            );
+
+<span class="nc bnc" id="L57" title="All 2 branches missed.">            if (!targetTypes.contains(type)) {</span>
+<span class="nc" id="L58">                return false;</span>
+            }
+
+<span class="nc" id="L61">            String parentNodeCode = op.getParent().toString();</span>
+            // No usamos op.getValue().toString() para obtener el valor del literal sino que miramos el parent porque
+            // Spoon separa los literales negativos en dos nodos: el operador de negación y el literal.
+
+<span class="nc bnc" id="L65" title="All 4 branches missed.">            if ((Objects.equals(op.getValue().toString(), &quot;1&quot;)) || parentNodeCode.contains(&quot;-&quot;)) {</span>
+                // Para evitar generar mutantes inválidos, ignoramos los literales que ya son 1
+                //Y como a los negativos los debería captar el CtUnaryOperator, evitamos esos también
+<span class="nc" id="L68">                return false;</span>
+            }
+
+<span class="nc" id="L71">            return true;</span>
         }
 
-<span class="nc" id="L34">        String parentNodeCode = op.getParent().toString();</span>
-        // No usamos op.getValue().toString() para obtener el valor del literal sino que miramos el parent porque
-        // Spoon separa los literales negativos en dos nodos: el operador de negación y el literal.
-<span class="nc bnc" id="L37" title="All 4 branches missed.">        if ((Objects.equals(op.getValue().toString(), &quot;1&quot;)) &amp;&amp; !parentNodeCode.contains(&quot;-1&quot;)) {</span>
-            // Para evitar generar mutantes inválidos, ignoramos los literales que ya son 1
-<span class="nc" id="L39">            return false;</span>
-        }
-
-<span class="nc" id="L42">        return true;</span>
     }
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
-<span class="nc" id="L48">        CtLiteral op = (CtLiteral)candidate;</span>
-<span class="nc" id="L49">        op.setValue(op.getFactory().Code().createLiteral(1));</span>
-<span class="nc" id="L50">    }</span>
+
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        if (candidate instanceof CtUnaryOperator) {</span>
+<span class="nc" id="L80">            CtUnaryOperator op = (CtUnaryOperator)candidate;</span>
+<span class="nc" id="L81">            CtLiteral newLiteral = op.getFactory().Code().createLiteral(1);</span>
+<span class="nc" id="L82">            op.setOperand(newLiteral);</span>
+<span class="nc" id="L83">            op.setKind(UnaryOperatorKind.POS);</span>
+<span class="nc" id="L84">        } else {</span>
+<span class="nc" id="L85">            CtLiteral op = (CtLiteral)candidate;</span>
+<span class="nc" id="L86">            op.setValue(op.getFactory().Code().createLiteral(1));</span>
+        }
+
+<span class="nc" id="L89">    }</span>
 
     private static String getLiteralType(CtLiteral op) {
-<span class="nc" id="L53">        return op.getType().toString();</span>
+<span class="nc" id="L92">        return op.getType().toString();</span>
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
-<span class="nc" id="L59">        CtLiteral op = (CtLiteral)candidate;</span>
+        CtLiteral op;
 
-<span class="nc" id="L61">        String opString = op.getValue().toString();</span>
-
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (op.getParent().toString().contains(&quot;-1&quot;)) {</span>
-<span class="nc" id="L64">            opString = &quot;-1&quot;;</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        if (candidate instanceof CtUnaryOperator) {</span>
+<span class="nc" id="L100">            op = (CtLiteral) ((CtUnaryOperator) candidate).getOperand();</span>
+<span class="nc" id="L101">            return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
+<span class="nc" id="L102">                    &quot;-&quot; + op.getValue().toString() + &quot; por 1&quot; +</span>
+<span class="nc" id="L103">                    &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
+        } else {
+<span class="nc" id="L105">            op = (CtLiteral) candidate;</span>
+<span class="nc" id="L106">            return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
+<span class="nc" id="L107">                    op.getValue().toString() + &quot; por 1&quot; +</span>
+<span class="nc" id="L108">                    &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
         }
-
-<span class="nc" id="L67">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
-                opString + &quot; por 1&quot; +
-<span class="nc" id="L69">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
