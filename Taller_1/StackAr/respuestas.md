@@ -8,7 +8,7 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 ## Ejercicio 1: Resultados de generación de mutantes
 
 1. ¿Cuántos mutantes se generaron en total?
-   - Respuesta: 75
+   - Respuesta: 76
 
 2. ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
    - Respuesta: Los operadores de mutación que más mutantes generaron fueron TrueConditionalMutators y FalseConditionalMutators con 10 mutantes cada uno.
@@ -31,14 +31,14 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 1. ¿Cuántos mutantes vivos y muertos encontraron cada uno de los test suites?
    - **StackTests1**:
      - Mutantes vivos: 56
-     - Mutantes muertos: 19
+     - Mutantes muertos: 20
    - **StackTests2**:
      - Mutantes vivos: 38
-     - Mutantes muertos: 37
+     - Mutantes muertos: 38
 
 2. ¿Cuál es el mutation score de cada test suite?
-   - **StackTests1**: 25%
-   - **StackTests2**: 49%
+   - **StackTests1**: 26%
+   - **StackTests2**: 50%
 
 ---
 
@@ -49,15 +49,15 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 
 2. ¿Cuántos mutantes vivos y muertos encontraron?
    - Mutantes vivos: 3
-   - Mutantes muertos: 72
+   - Mutantes muertos: 73
 
 3. Comente cuáles son todos los mutantes vivos que quedaron y por qué son equivalentes al programa original (si no lo fueran, todavía es posible mejorar el mutation score).
    - Respuesta:
-      - StackArMutated3117 (FalseConditionalsMutator: Se reemplazó this == obj por false en la línea 72.): se trata de un mutante equivalente. Al querer comparar un stack consigo mismo y poner dicha guarda en false, se saltea el paso de chequear si es el mismo stack en memoria. Pero luego, al poseer los mismos elementos, el metodo igual sigue respondiendo de la misma manera. 
-      - StackArMutated1485 (FalseConditionalsMutator: Se reemplazó isEmpty() por false en la línea 45.): en este caso se esperar que se pueda realizar un pop de un stack vacio sin hacer saltar la exception programada en el metodo pop. Pero el metodo pop a su vez llama al metodo top que tiene la misma condicion (esta vez, sin modificar por el mutante), que hace que salte la misma excepcion. Por lo tanto, a pesar de la modificacion del mutante, como la condicion que hace saltar la excepcion se chequea dos veces, esta siempre salta.
-      - StackArMutated7779 (MathMutator: Se reemplazó * por / en la línea 65.): se trata de un mutante equivalente, ya que se cambia una multiplicación por 1 (el valor de result), por una division por 1.
+      - StackArMutated2084 (FalseConditionalsMutator: Se reemplazó this == obj por false en la línea 72.): se trata de un mutante equivalente. Al querer comparar un stack consigo mismo y poner dicha guarda en false, se saltea el paso de chequear si es el mismo stack en memoria. Pero luego, al poseer los mismos elementos, el metodo igual sigue respondiendo de la misma manera. 
+      - StackArMutated1357 (FalseConditionalsMutator: Se reemplazó isEmpty() por false en la línea 45.): en este caso se esperar que se pueda realizar un pop de un stack vacio sin hacer saltar la exception programada en el metodo pop. Pero el metodo pop a su vez llama al metodo top que tiene la misma condicion (esta vez, sin modificar por el mutante), que hace que salte la misma excepcion. Por lo tanto, a pesar de la modificacion del mutante, como la condicion que hace saltar la excepcion se chequea dos veces, esta siempre salta.
+      - StackArMutated4625 (MathMutator: Se reemplazó * por / en la línea 65.): se trata de un mutante equivalente, ya que se cambia una multiplicación por 1 (el valor de result), por una division por 1.
 4. ¿Cuál es el instruction coverage promedio que lograron para las clases mutadas?
-   - Respuesta: 66%
+   - Respuesta: 61%
 
 5. ¿Cuál es el peor instruction coverage que lograron para una clase mutada? ¿Por qué creen que sucede esto?
    - Respuesta: 5% 
