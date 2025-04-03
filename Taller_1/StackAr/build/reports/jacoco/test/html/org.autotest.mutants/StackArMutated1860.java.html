@@ -51,8 +51,8 @@ public class StackArMutated1860 extends org.autotest.Stack {
     }
 
     public java.lang.Object top() throws java.lang.IllegalStateException {
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if (isEmpty()) {</span>
-<span class="nc" id="L55">            throw new java.lang.IllegalStateException();</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (isEmpty()) {</span>
+<span class="fc" id="L55">            throw new java.lang.IllegalStateException();</span>
         }
 <span class="fc" id="L57">        java.lang.Object rv = this.elems[readIndex];</span>
 <span class="fc" id="L58">        return rv;</span>
@@ -60,32 +60,32 @@ public class StackArMutated1860 extends org.autotest.Stack {
 
     @java.lang.Override
     public int hashCode() {
-<span class="nc" id="L63">        final int prime = 31;</span>
-<span class="nc" id="L64">        int result = 1;</span>
-<span class="nc" id="L65">        result = (prime * result) + java.util.Arrays.hashCode(elems);</span>
-<span class="nc" id="L66">        result = (prime * result) + readIndex;</span>
-<span class="nc" id="L67">        return result;</span>
+<span class="fc" id="L63">        final int prime = 31;</span>
+<span class="fc" id="L64">        int result = 1;</span>
+<span class="fc" id="L65">        result = (prime * result) + java.util.Arrays.hashCode(elems);</span>
+<span class="fc" id="L66">        result = (prime * result) + readIndex;</span>
+<span class="fc" id="L67">        return result;</span>
     }
 
     @java.lang.Override
     public boolean equals(java.lang.Object obj) {
-<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (this == obj) {</span>
-<span class="nc" id="L73">            return true;</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (this == obj) {</span>
+<span class="fc" id="L73">            return true;</span>
         }
-<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (obj == null) {</span>
-<span class="nc" id="L76">            return false;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        if (obj == null) {</span>
+<span class="fc" id="L76">            return false;</span>
         }
-<span class="nc bnc" id="L78" title="All 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
 <span class="nc" id="L79">            return false;</span>
         }
-<span class="nc" id="L81">        org.autotest.mutants.StackArMutated1860 other = ((org.autotest.mutants.StackArMutated1860) (obj));</span>
-<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (!java.util.Arrays.equals(elems, other.elems)) {</span>
+<span class="fc" id="L81">        org.autotest.mutants.StackArMutated1860 other = ((org.autotest.mutants.StackArMutated1860) (obj));</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        if (!java.util.Arrays.equals(elems, other.elems)) {</span>
 <span class="nc" id="L83">            return false;</span>
         }
-<span class="nc bnc" id="L85" title="All 2 branches missed.">        if (readIndex != other.readIndex) {</span>
-<span class="nc" id="L86">            return false;</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if (readIndex != other.readIndex) {</span>
+<span class="fc" id="L86">            return false;</span>
         }
-<span class="nc" id="L88">        return true;</span>
+<span class="fc" id="L88">        return true;</span>
     }
 
     @java.lang.Override

@@ -162,5 +162,13 @@ public class StackTests3 extends MutationAnalysisRunner {
 
     }
 
+    public void testAVerQuePasaSiSeHacePushNull() throws Exception {
+        Stack stack1 = createStack();
+        stack1.push(null);
+        Stack stack2 = createStack();
+
+        assertFalse(stack1.equals(stack2));
+    }
+
 }
 
