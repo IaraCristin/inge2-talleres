@@ -1,7 +1,10 @@
 import os
 import z3
 
-from src.utils import get_result_and_model
+
+from utils import get_result_and_model
+#from src.utils import get_result_and_model
+
 
 if __name__ == '__main__':
     # ejecuta cada .smt de la carpeta parte_1

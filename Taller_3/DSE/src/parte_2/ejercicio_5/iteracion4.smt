@@ -1,0 +1,12 @@
+; not(c1) and c2
+;c1=(a<=0 or b<=0 or c<=0)
+;c2=(not (a + b > c and a + c > b and b + c > a))
+;c3=(a == b and b == c)
+;c4=(a == b or b == c or a == c)
+(declare-const a Int)
+(declare-const b Int)
+(declare-const c Int)
+(assert (not (or (<= a 0)(or (<= b 0)(<= c 0)))))
+(assert (not (and (> (+ a b) c)(and (> (+ a c) b)(> (+ b c) a)))))
+(check-sat)
+(get-model)

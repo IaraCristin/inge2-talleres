@@ -1,0 +1,1 @@
+b) tenemos branch coverage del 100% con los casos del test generador realizando ejecución dinamica
