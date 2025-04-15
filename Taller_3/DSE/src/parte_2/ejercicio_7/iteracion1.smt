@@ -1,0 +1,6 @@
+; c1_0 and (u(c1)<=2)
+(declare-const n Int)
+(assert (< 0 n))
+(assert (<= 0 2))
+(check-sat)
+(get-model)
