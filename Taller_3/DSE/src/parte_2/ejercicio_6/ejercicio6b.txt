@@ -1,0 +1,2 @@
+Tenemos un 100% de branch coverage.
+Con k=-3 se ejecutan tanto el branch true como el false de C1 y C2.
