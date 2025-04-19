@@ -42,9 +42,7 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 
 2. Extender manualmente el test suite para mejorar el mutation score con Pitest:
    - ¿Cuál es el mejor mutation score que se pudo obtener?
-     - Respuesta: 92%
+     - Respuesta: 97%
    - Si hay mutantes equivalentes, explicar cuáles son y justificar por qué son equivalentes.
      - Respuesta: 
        - En la linea 96 es lo mismo multiplicar o dividir "prime" por "result", ya que en esa linea "result" es siempre 1, por lo tanto es un mutante equivalente.
-       - La linea 113 es inalcanzable, ya que si se cumple la condición anterior sobre los elementos del stack, se va a cumplir la condición sobre el read index. Esto ocurre por que el read index y los elementos del stack solo se modifican en los metodos pop y push de manera acorde.
-       - 
