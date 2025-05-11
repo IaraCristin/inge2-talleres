@@ -5,6 +5,9 @@ from typing import Union, Dict
 
 class TestEvaluateCondition(unittest.TestCase):
 
+    def tearDown(self):
+        clear_maps()
+
     def assert_operation(self,
                          branch: bool, op: str,
                          lhs: Union[int,str], rhs: Union[int,str,Dict]):
