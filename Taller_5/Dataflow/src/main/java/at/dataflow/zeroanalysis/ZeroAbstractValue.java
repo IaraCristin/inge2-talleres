@@ -195,9 +195,31 @@ public enum ZeroAbstractValue {
      * @param another the other ZeroAbstractValue.
      * @return the result of the merge.
      */
+
     public ZeroAbstractValue merge(ZeroAbstractValue another) {
-        // TODO: IMPLEMENT
-        throw new UnsupportedOperationException();
+        switch (this){
+            case ZERO:
+                switch (another) {
+                    case ZERO: return ZERO;
+                    case BOTTOM: return ZERO;
+                    default: return TOP;
+                }
+            case TOP: return TOP;
+            case POSITIVE:
+                switch (another) {
+                    case POSITIVE: return POSITIVE;
+                    case BOTTOM: return POSITIVE;
+                    default: return TOP;
+                }
+            case NEGATIVE:
+                switch (another) {
+                    case NEGATIVE: return NEGATIVE;
+                    case BOTTOM: return NEGATIVE;
+                    default: return TOP;
+                }
+
+            default: return another;
+        }
     }
 
 }

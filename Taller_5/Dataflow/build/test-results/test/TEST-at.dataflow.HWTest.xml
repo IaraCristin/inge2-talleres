@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="at.dataflow.HWTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-05-21T23:31:38" hostname="pc28" time="0.581">
+  <properties/>
+  <testcase name="testTarget1()" classname="at.dataflow.HWTest" time="0.273"/>
+  <testcase name="testTarget2()" classname="at.dataflow.HWTest" time="0.059"/>
+  <testcase name="testTarget3()" classname="at.dataflow.HWTest" time="0.053"/>
+  <testcase name="testTarget4()" classname="at.dataflow.HWTest" time="0.045"/>
+  <testcase name="testTarget5()" classname="at.dataflow.HWTest" time="0.04"/>
+  <testcase name="testTarget6()" classname="at.dataflow.HWTest" time="0.044"/>
+  <testcase name="testTarget7()" classname="at.dataflow.HWTest" time="0.065"/>
+  <system-out><![CDATA[SCP: /home/Estudiante/Escritorio/inge 2/inge2-talleres/Taller_5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+Soot started on Wed May 21 20:31:39 ART 2025
+Soot finished on Wed May 21 20:31:39 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/Estudiante/Escritorio/inge 2/inge2-talleres/Taller_5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+Soot started on Wed May 21 20:31:39 ART 2025
+Soot finished on Wed May 21 20:31:39 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/Estudiante/Escritorio/inge 2/inge2-talleres/Taller_5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+Soot started on Wed May 21 20:31:39 ART 2025
+Soot finished on Wed May 21 20:31:39 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/Estudiante/Escritorio/inge 2/inge2-talleres/Taller_5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+Soot started on Wed May 21 20:31:39 ART 2025
+Soot finished on Wed May 21 20:31:39 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/Estudiante/Escritorio/inge 2/inge2-talleres/Taller_5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+Soot started on Wed May 21 20:31:39 ART 2025
+Soot finished on Wed May 21 20:31:39 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/Estudiante/Escritorio/inge 2/inge2-talleres/Taller_5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+Soot started on Wed May 21 20:31:39 ART 2025
+Soot finished on Wed May 21 20:31:39 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/Estudiante/Escritorio/inge 2/inge2-talleres/Taller_5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+Soot started on Wed May 21 20:31:39 ART 2025
+Soot finished on Wed May 21 20:31:39 ART 2025
+Soot has run for 0 min. 0 sec.
+]]></system-out>
+  <system-err><![CDATA[[Thread-6] ERROR at.dataflow.Launcher - Found a possible division by zero in line 7
+[Thread-10] ERROR at.dataflow.Launcher - Found a possible division by zero in line 7
+[Thread-14] ERROR at.dataflow.Launcher - Found a possible division by zero in line 6
+[Thread-18] ERROR at.dataflow.Launcher - Found a possible division by zero in line 12
+[Thread-30] ERROR at.dataflow.Launcher - Found a possible division by zero in line 7
+]]></system-err>
+</testsuite>

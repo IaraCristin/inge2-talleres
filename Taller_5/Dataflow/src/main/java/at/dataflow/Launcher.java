@@ -1,6 +1,6 @@
-package inge2.dataflow;
+package at.dataflow;
 
-import inge2.dataflow.zeroanalysis.DivisionByZeroAnalysis;
+import at.dataflow.zeroanalysis.DivisionByZeroAnalysis;
 import org.slf4j.Logger;
 import soot.*;
 import soot.tagkit.LineNumberTag;
@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 import java.io.File;
 
 import static org.slf4j.LoggerFactory.getLogger;
-import at.dataflow.zeroanalysis.DivisionByZeroAnalysis;
 
 /**
  * Launcher class for the division by zero analysis.

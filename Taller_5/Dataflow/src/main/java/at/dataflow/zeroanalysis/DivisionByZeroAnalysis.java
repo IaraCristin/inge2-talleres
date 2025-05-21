@@ -8,7 +8,6 @@ import soot.toolkits.scalar.ForwardFlowAnalysis;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * This class implements a may forward dataflow analysis that detects if a division by zero is possible in a given
@@ -75,7 +74,12 @@ public class DivisionByZeroAnalysis extends ForwardFlowAnalysis<Unit, ZeroAbstra
         output.clear();
         // Use union (analysis may).
         // TODO: IMPLEMENT
-        throw new UnsupportedOperationException("Operation is not implemented yet.");
+        //input1.union(input2);
+        ZeroAbstractState tmp = input1.union(input2);
+
+        for (String tmpVariable : tmp.getDefinedVariables()) {
+            output.setValue(tmpVariable, tmp.getValue(tmpVariable));
+        }
     }
 
     @Override
