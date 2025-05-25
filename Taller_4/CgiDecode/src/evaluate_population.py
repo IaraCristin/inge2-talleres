@@ -8,4 +8,4 @@ def evaluate_population(population: List[Individual]):
     """
     Evalúa la población y asigna el valor de fitness a cada individuo.
     """
-    # TODO: COMPLETAR
+    for individual in population: individual.set_fitness(get_fitness_cgi_decode(individual))
