@@ -35,8 +35,15 @@ def modify_character(test_case: str) -> str:
     Modifica un caracter al azar de un test case.
     """
     idx = randint(0, len(test_case)-1)
-    test_case[idx] = get_random_character()
-    return test_case
+
+    new_test_case = ""
+
+    for i in range(len(test_case)):
+
+        if i != idx: new_test_case += test_case[i]
+        else: new_test_case += get_random_character()
+
+    return new_test_case
 
 
 def add_test_case(individual: Individual) -> Individual:
@@ -77,13 +84,15 @@ def modify_test_case(individual: Individual) -> Individual:
     test_case_idx = randint(0, len(test_suite)-1)
     test_case = test_suite[test_case_idx]
 
-    modifications = [modify_character]
-    if len(test_case) > 0: modifications += [remove_character] 
+    modifications = []
+    if len(test_case) > 0: modifications += [remove_character, modify_character] 
     if len(test_case) < 10: modifications += [add_character]
 
-    modification_func = choice(modifications)
-    test_case = modification_func(test_case)
-    individual.test_suite[test_case_idx] = test_case
+    if len(modifications) != 0:
+
+        modification_func = choice(modifications)
+        test_case = modification_func(test_case)
+        individual.test_suite[test_case_idx] = test_case
 
     return individual
 

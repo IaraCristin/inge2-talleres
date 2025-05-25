@@ -61,7 +61,7 @@ class GeneticAlgorithm:
         # Continuar mientras la cantidad de generaciones es menor que 1000
         # y no haya ningun individuo que cubra todos los objetivos
 
-        while self.generation < 1000 and self.covered_all_branches(self.get_best_individual()):
+        while self.generation < 1000 and not self.covered_all_branches(self.fitness_best_individual):
             # Producir una nueva poblacion basándose en la anterior, mediante crossover y mutation.
             new_population = []
 
